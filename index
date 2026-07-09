@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вакансія відкрита — телефонуй зараз</title>
+<style>
+  @font-face {
+    font-family: 'Archivo Black';
+    src: local('Archivo Black');
+  }
+
+  :root{
+    --ink: #14181F;
+    --paper: #F5F3EE;
+    --orange: #FF6A13;
+    --yellow: #FFC736;
+    --slate: #7C8494;
+    --line: rgba(245,243,238,0.16);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html,body{
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body{
+    padding-bottom: 108px; /* room for sticky call bar */
+  }
+
+  a{ color: inherit; text-decoration:none; }
+
+  .container{
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- TOP STRIP ---------- */
+  .stamp-strip{
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--yellow),
+      var(--yellow) 14px,
+      var(--ink) 14px,
+      var(--ink) 28px
+    );
+    height: 10px;
+    width: 100%;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 40px 24px 28px;
+    text-align: center;
+    position: relative;
+  }
+
+  .eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    border: 1px solid var(--yellow);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+  }
+
+  .pulse-dot{
+    width: 7px; height: 7px;
+    background: var(--orange);
+    border-radius: 50%;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes pulse{
+    0%,100%{ opacity: 1; transform: scale(1); }
+    50%{ opacity: 0.4; transform: scale(1.4); }
+  }
+
+  h1{
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    font-size: clamp(34px, 9vw, 46px);
+    line-height: 1.04;
+    text-transform: uppercase;
+  }
+
+  h1 .accent{ color: var(--orange); }
+
+  .subhead{
+    margin-top: 16px;
+    font-size: 17px;
+    line-height: 1.5;
+    color: rgba(245,243,238,0.72);
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---------- SALARY TICKET ---------- */
+  .ticket{
+    margin: 32px auto 0;
+    max-width: 420px;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5);
+  }
+
+  .ticket::before, .ticket::after{
+    content:"";
+    position:absolute;
+    width: 22px; height: 22px;
+    background: var(--ink);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .ticket::before{ left: -11px; }
+  .ticket::after{ right: -11px; }
+
+  .ticket-main{
+    flex: 1;
+    padding: 20px 18px;
+    text-align: left;
+    border-right: 2px dashed rgba(20,24,31,0.25);
+  }
+
+  .ticket-label{
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+
+  .ticket-value{
+    font-family: Georgia, serif;
+    font-weight: 900;
+    font-size: 26px;
+    margin-top: 4px;
+  }
+
+  .ticket-stub{
+    width: 92px;
+    padding: 20px 12px;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .ticket-stub .n{
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--slate);
+    writing-mode: vertical-rl;
+    letter-spacing: 0.1em;
+  }
+
+  /* ---------- DETAILS ---------- */
+  .details{
+    margin-top: 40px;
+  }
+
+  .details-title{
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    gap: 16px;
+  }
+
+  .row:last-child{ border-bottom:none; }
+
+  .row .k{
+    font-size: 14px;
+    color: rgba(245,243,238,0.55);
+    flex-shrink:0;
+  }
+
+  .row .v{
+    font-size: 15px;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  /* ---------- WHY US ---------- */
+  .why{
+    margin-top: 44px;
+  }
+
+  .why h2{
+    font-family: Georgia, serif;
+    font-weight: 900;
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .why ul{ list-style:none; }
+
+  .why li{
+    display:flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    font-size: 15px;
+    line-height:1.4;
+  }
+
+  .why li:last-child{ border-bottom: 1px solid var(--line); }
+
+  .why .mark{
+    color: var(--orange);
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    flex-shrink:0;
+  }
+
+  /* ---------- MID CTA CARD ---------- */
+  .mid-cta{
+    margin-top: 44px;
+    background: linear-gradient(180deg, var(--orange), #E85800);
+    border-radius: 10px;
+    padding: 26px 22px;
+    text-align:center;
+  }
+
+  .mid-cta p{
+    font-size: 14px;
+    color: rgba(20,24,31,0.75);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+
+  .mid-cta a.tap{
+    display:block;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: Georgia, serif;
+    font-weight: 900;
+    font-size: 19px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 18px;
+    border-radius: 8px;
+  }
+
+  .mid-cta .num{
+    display:block;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: rgba(20,24,31,0.6);
+  }
+
+  /* ---------- FOOT NOTE ---------- */
+  .footnote{
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: rgba(245,243,238,0.4);
+    line-height: 1.6;
+  }
+
+  /* ---------- STICKY CALL BAR ---------- */
+  .call-bar{
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    background: var(--ink);
+    border-top: 1px solid var(--line);
+    padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
+    z-index: 50;
+  }
+
+  .call-bar-inner{
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .call-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--orange);
+    color: var(--ink);
+    font-family: Georgia, serif;
+    font-weight: 900;
+    font-size: 19px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 17px;
+    border-radius: 8px;
+    box-shadow: 0 10px 24px -8px rgba(255,106,19,0.6);
+    animation: bob 2.4s ease-in-out infinite;
+  }
+
+  @keyframes bob{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-3px); }
+  }
+
+  .call-btn svg{ width: 20px; height:20px; flex-shrink:0; }
+
+  @media (prefers-reduced-motion: reduce){
+    .pulse-dot, .call-btn{ animation: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stamp-strip"></div>
+
+  <div class="container">
+
+    <section class="hero">
+      <span class="eyebrow"><span class="pulse-dot"></span>Конкурсний відбір триває</span>
+      <h1>Керуй розумним<br><span class="accent">обладнанням</span></h1>
+      <p class="subhead">У зв'язку з розширенням виробничих потужностей шукаємо активних, цілеспрямованих людей у команду. Оновлюємо парк обладнання до європейського рівня — навчимо працювати на ньому з нуля.</p>
+
+      <div class="ticket">
+        <div class="ticket-main">
+          <div class="ticket-label">Дохід за зміну</div>
+          <div class="ticket-value" style="font-size:20px;">Визначається на співбесіді</div>
+        </div>
+        <div class="ticket-stub">
+          <span class="n">ВАКАНСІЯ №014</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="details">
+      <div class="details-title">Умови</div>
+      <div class="row"><span class="k">Обладнання</span><span class="v">Сучасне, європейського рівня</span></div>
+      <div class="row"><span class="k">Графік</span><span class="v">Позмінний, за домовленістю</span></div>
+      <div class="row"><span class="k">Відбір</span><span class="v">Конкурсна співбесіда</span></div>
+      <div class="row"><span class="k">Старт</span><span class="v">Одразу після співбесіди</span></div>
+    </section>
+
+    <section class="why">
+      <h2>Чому варто зателефонувати</h2>
+      <ul>
+        <li><span class="mark">01</span>Розширюємо виробництво — команді потрібні нові люди вже зараз.</li>
+        <li><span class="mark">02</span>Навчимо працювати на розумному обладнанні з нуля, досвід не обов'язковий.</li>
+        <li><span class="mark">03</span>Конкурсний відбір без черг і зайвих анкет — усе вирішується на співбесіді.</li>
+      </ul>
+    </section>
+
+    <section class="mid-cta">
+      <p>Місця в конкурсному відборі обмежені</p>
+      <a class="tap" href="tel:+380XXXXXXXXX">Зателефонувати рекрутеру</a>
+      <span class="num">+380 XX XXX XX XX · з 9:00 до 20:00</span>
+    </section>
+
+    <p class="footnote">
+      Натискаючи «Зателефонувати», ви погоджуєтесь на обробку персональних даних для розгляду кандидатури. Дзвінок — це перший і єдиний крок: жодних анкет і очікування відповіді на пошту.
+    </p>
+
+  </div>
+
+  <div class="call-bar">
+    <div class="call-bar-inner">
+      <a class="call-btn" href="tel:+380XXXXXXXXX">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        Зателефонувати зараз
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
