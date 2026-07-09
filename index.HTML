@@ -3,199 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Вакансія відкрита — телефонуй зараз</title>
+<title>Вакансія у Vitan — оператор обладнання</title>
 <style>
-  @font-face {
-    font-family: 'Archivo Black';
-    src: local('Archivo Black');
-  }
-
   :root{
-    --ink: #14181F;
-    --paper: #F5F3EE;
-    --orange: #FF6A13;
-    --yellow: #FFC736;
-    --slate: #7C8494;
-    --line: rgba(245,243,238,0.16);
+    --ink: #1C2024;
+    --paper: #FFFFFF;
+    --cream: #F7F5F1;
+    --accent: #E4572E;
+    --accent-dark: #C43F1C;
+    --slate: #6B7280;
+    --line: #E7E4DE;
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
 
   html,body{
-    background: var(--ink);
-    color: var(--paper);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
   }
 
-  body{
-    padding-bottom: 108px; /* room for sticky call bar */
-  }
+  body{ padding-bottom: 104px; }
 
   a{ color: inherit; text-decoration:none; }
 
   .container{
-    max-width: 520px;
+    max-width: 560px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
-  /* ---------- TOP STRIP ---------- */
-  .stamp-strip{
-    background: repeating-linear-gradient(
-      -45deg,
-      var(--yellow),
-      var(--yellow) 14px,
-      var(--ink) 14px,
-      var(--ink) 28px
-    );
-    height: 10px;
-    width: 100%;
+  /* ---------- BRAND HEADER ---------- */
+  .brand-bar{
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 24px;
+  }
+
+  .brand-bar-inner{
+    max-width: 560px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand-bar img{ height: 30px; display:block; }
+
+  .brand-bar .tag{
+    font-size: 12px;
+    color: var(--slate);
+    letter-spacing: 0.02em;
   }
 
   /* ---------- HERO ---------- */
   .hero{
-    padding: 40px 24px 28px;
-    text-align: center;
-    position: relative;
+    padding: 40px 24px 8px;
+    text-align: left;
   }
 
   .eyebrow{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Courier New', monospace;
-    font-size: 13px;
-    letter-spacing: 0.14em;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--yellow);
-    border: 1px solid var(--yellow);
-    padding: 6px 14px;
+    color: var(--accent-dark);
+    background: rgba(228,87,46,0.09);
+    padding: 6px 12px;
     border-radius: 100px;
-    margin-bottom: 22px;
-  }
-
-  .pulse-dot{
-    width: 7px; height: 7px;
-    background: var(--orange);
-    border-radius: 50%;
-    animation: pulse 1.6s ease-in-out infinite;
-  }
-
-  @keyframes pulse{
-    0%,100%{ opacity: 1; transform: scale(1); }
-    50%{ opacity: 0.4; transform: scale(1.4); }
+    margin-bottom: 18px;
   }
 
   h1{
-    font-family: Georgia, 'Times New Roman', serif;
-    font-weight: 900;
+    font-size: clamp(28px, 8vw, 38px);
+    font-weight: 800;
+    line-height: 1.15;
     letter-spacing: -0.01em;
-    font-size: clamp(34px, 9vw, 46px);
-    line-height: 1.04;
-    text-transform: uppercase;
+    color: var(--ink);
   }
 
-  h1 .accent{ color: var(--orange); }
+  h1 .accent{ color: var(--accent); }
 
   .subhead{
-    margin-top: 16px;
-    font-size: 17px;
-    line-height: 1.5;
-    color: rgba(245,243,238,0.72);
-    max-width: 380px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 14px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #454B54;
+    max-width: 460px;
   }
 
-  /* ---------- SALARY TICKET ---------- */
-  .ticket{
-    margin: 32px auto 0;
-    max-width: 420px;
+  /* ---------- INFO CARD ---------- */
+  .info-card{
+    margin-top: 28px;
     background: var(--paper);
-    color: var(--ink);
-    border-radius: 4px;
-    position: relative;
-    display: flex;
-    align-items: stretch;
-    box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5);
-  }
-
-  .ticket::before, .ticket::after{
-    content:"";
-    position:absolute;
-    width: 22px; height: 22px;
-    background: var(--ink);
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .ticket::before{ left: -11px; }
-  .ticket::after{ right: -11px; }
-
-  .ticket-main{
-    flex: 1;
-    padding: 20px 18px;
-    text-align: left;
-    border-right: 2px dashed rgba(20,24,31,0.25);
-  }
-
-  .ticket-label{
-    font-family: 'Courier New', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--slate);
-  }
-
-  .ticket-value{
-    font-family: Georgia, serif;
-    font-weight: 900;
-    font-size: 26px;
-    margin-top: 4px;
-  }
-
-  .ticket-stub{
-    width: 92px;
-    padding: 20px 12px;
-    text-align: center;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-  }
-
-  .ticket-stub .n{
-    font-family: 'Courier New', monospace;
-    font-weight: 700;
-    font-size: 12px;
-    color: var(--slate);
-    writing-mode: vertical-rl;
-    letter-spacing: 0.1em;
-  }
-
-  /* ---------- DETAILS ---------- */
-  .details{
-    margin-top: 40px;
-  }
-
-  .details-title{
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--slate);
-    margin-bottom: 14px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--line);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 4px 20px;
   }
 
   .row{
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 14px 0;
+    padding: 16px 0;
     border-bottom: 1px solid var(--line);
     gap: 16px;
   }
@@ -204,7 +116,7 @@
 
   .row .k{
     font-size: 14px;
-    color: rgba(245,243,238,0.55);
+    color: var(--slate);
     flex-shrink:0;
   }
 
@@ -212,19 +124,19 @@
     font-size: 15px;
     font-weight: 600;
     text-align: right;
+    color: var(--ink);
   }
 
   /* ---------- WHY US ---------- */
   .why{
-    margin-top: 44px;
+    margin-top: 40px;
   }
 
   .why h2{
-    font-family: Georgia, serif;
-    font-weight: 900;
-    font-size: 22px;
-    text-transform: uppercase;
-    margin-bottom: 18px;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--ink);
   }
 
   .why ul{ list-style:none; }
@@ -232,65 +144,84 @@
   .why li{
     display:flex;
     gap: 14px;
+    align-items: flex-start;
     padding: 14px 0;
     border-top: 1px solid var(--line);
     font-size: 15px;
-    line-height:1.4;
+    line-height:1.5;
+    color: #383D45;
   }
 
   .why li:last-child{ border-bottom: 1px solid var(--line); }
 
-  .why .mark{
-    color: var(--orange);
-    font-family: 'Courier New', monospace;
-    font-weight: 700;
+  .why .dot{
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
     flex-shrink:0;
+    margin-top: 7px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    margin-top: 40px;
+    padding-top: 4px;
+  }
+
+  .about h2{
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+
+  .about p{
+    font-size: 15px;
+    line-height: 1.65;
+    color: #454B54;
   }
 
   /* ---------- MID CTA CARD ---------- */
   .mid-cta{
-    margin-top: 44px;
-    background: linear-gradient(180deg, var(--orange), #E85800);
-    border-radius: 10px;
-    padding: 26px 22px;
+    margin-top: 40px;
+    background: var(--ink);
+    border-radius: 14px;
+    padding: 28px 24px;
     text-align:center;
   }
 
   .mid-cta p{
     font-size: 14px;
-    color: rgba(20,24,31,0.75);
-    margin-bottom: 14px;
-    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 16px;
   }
 
   .mid-cta a.tap{
     display:block;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: Georgia, serif;
-    font-weight: 900;
-    font-size: 19px;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    padding: 18px;
-    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 16px;
+    border-radius: 9px;
   }
+
+  .mid-cta a.tap:hover{ background: var(--accent-dark); }
 
   .mid-cta .num{
     display:block;
-    margin-top: 10px;
-    font-family: 'Courier New', monospace;
+    margin-top: 12px;
     font-size: 13px;
-    color: rgba(20,24,31,0.6);
+    color: rgba(255,255,255,0.5);
   }
 
   /* ---------- FOOT NOTE ---------- */
   .footnote{
-    margin-top: 40px;
+    margin-top: 36px;
     padding-top: 20px;
     border-top: 1px solid var(--line);
     font-size: 12px;
-    color: rgba(245,243,238,0.4);
+    color: var(--slate);
     line-height: 1.6;
   }
 
@@ -298,14 +229,15 @@
   .call-bar{
     position: fixed;
     left: 0; right: 0; bottom: 0;
-    background: var(--ink);
+    background: var(--paper);
     border-top: 1px solid var(--line);
     padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
     z-index: 50;
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.05);
   }
 
   .call-bar-inner{
-    max-width: 520px;
+    max-width: 560px;
     margin: 0 auto;
   }
 
@@ -314,85 +246,74 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: var(--orange);
-    color: var(--ink);
-    font-family: Georgia, serif;
-    font-weight: 900;
-    font-size: 19px;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    padding: 17px;
-    border-radius: 8px;
-    box-shadow: 0 10px 24px -8px rgba(255,106,19,0.6);
-    animation: bob 2.4s ease-in-out infinite;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 16px;
+    border-radius: 9px;
   }
 
-  @keyframes bob{
-    0%,100%{ transform: translateY(0); }
-    50%{ transform: translateY(-3px); }
-  }
+  .call-btn svg{ width: 19px; height:19px; flex-shrink:0; }
 
-  .call-btn svg{ width: 20px; height:20px; flex-shrink:0; }
-
-  @media (prefers-reduced-motion: reduce){
-    .pulse-dot, .call-btn{ animation: none; }
-  }
+  .call-btn:hover{ background: var(--accent-dark); }
 </style>
 </head>
 <body>
 
-  <div class="stamp-strip"></div>
+  <div class="brand-bar">
+    <div class="brand-bar-inner">
+      <a href="https://vitan.in.ua/" target="_blank" rel="noopener">
+        <img src="https://vitan.in.ua/image/catalog/vitan-logo.svg" alt="Vitan">
+      </a>
+      <span class="tag">Виробник металовиробів</span>
+    </div>
+  </div>
 
   <div class="container">
 
     <section class="hero">
-      <span class="eyebrow"><span class="pulse-dot"></span>Конкурсний відбір триває</span>
-      <h1>Керуй розумним<br><span class="accent">обладнанням</span></h1>
-      <p class="subhead">У зв'язку з розширенням виробничих потужностей шукаємо активних, цілеспрямованих людей у команду. Оновлюємо парк обладнання до європейського рівня — навчимо працювати на ньому з нуля.</p>
+      <span class="eyebrow">Відкрита вакансія</span>
+      <h1>Приєднуйся до <span class="accent">команди Vitan</span></h1>
+      <p class="subhead">У зв'язку з розширенням виробництва шукаємо оператора для роботи на сучасному обладнанні. Досвід не обов'язковий — навчимо на місці.</p>
 
-      <div class="ticket">
-        <div class="ticket-main">
-          <div class="ticket-label">Дохід за зміну</div>
-          <div class="ticket-value" style="font-size:20px;">Визначається на співбесіді</div>
-        </div>
-        <div class="ticket-stub">
-          <span class="n">ВАКАНСІЯ №014</span>
-        </div>
+      <div class="info-card">
+        <div class="row"><span class="k">Посада</span><span class="v">Оператор виробничого обладнання</span></div>
+        <div class="row"><span class="k">Графік</span><span class="v">Позмінний, за домовленістю</span></div>
+        <div class="row"><span class="k">Дохід</span><span class="v">Обговорюється на співбесіді</span></div>
+        <div class="row"><span class="k">Локація</span><span class="v">Виробництво Vitan</span></div>
       </div>
     </section>
 
-    <section class="details">
-      <div class="details-title">Умови</div>
-      <div class="row"><span class="k">Обладнання</span><span class="v">Сучасне, європейського рівня</span></div>
-      <div class="row"><span class="k">Графік</span><span class="v">Позмінний, за домовленістю</span></div>
-      <div class="row"><span class="k">Відбір</span><span class="v">Конкурсна співбесіда</span></div>
-      <div class="row"><span class="k">Старт</span><span class="v">Одразу після співбесіди</span></div>
-    </section>
-
     <section class="why">
-      <h2>Чому варто зателефонувати</h2>
+      <h2>Чому варто відгукнутися</h2>
       <ul>
-        <li><span class="mark">01</span>Розширюємо виробництво — команді потрібні нові люди вже зараз.</li>
-        <li><span class="mark">02</span>Навчимо працювати на розумному обладнанні з нуля, досвід не обов'язковий.</li>
-        <li><span class="mark">03</span>Конкурсний відбір без черг і зайвих анкет — усе вирішується на співбесіді.</li>
+        <li><span class="dot"></span>Vitan — український виробник металовиробів та меблів, що розширює виробничі потужності.</li>
+        <li><span class="dot"></span>Навчаємо роботі на обладнанні з нуля, без вимог до попереднього досвіду.</li>
+        <li><span class="dot"></span>Стабільна зайнятість на діючому підприємстві з багаторічною історією.</li>
       </ul>
     </section>
 
+    <section class="about">
+      <h2>Про компанію</h2>
+      <p>ТМ Vitan — український виробник товарів для дому, кемпінгу та будівництва: меблі, садові гойдалки, водостічні системи та елементи покрівлі. Продукцію можна знайти на <a href="https://vitan.in.ua/" target="_blank" rel="noopener" style="color:var(--accent-dark); text-decoration:underline;">vitan.in.ua</a>.</p>
+    </section>
+
     <section class="mid-cta">
-      <p>Місця в конкурсному відборі обмежені</p>
-      <a class="tap" href="tel:+380XXXXXXXXX">Зателефонувати рекрутеру</a>
-      <span class="num">+380 XX XXX XX XX · з 9:00 до 20:00</span>
+      <p>Залиште собі можливість поговорити з рекрутером напряму</p>
+      <a class="tap" href="tel:+380962223444">Зателефонувати рекрутеру</a>
+      <span class="num">+380 (96) 222 34 44 · Пн–Пт з 10:00 до 16:00</span>
     </section>
 
     <p class="footnote">
-      Натискаючи «Зателефонувати», ви погоджуєтесь на обробку персональних даних для розгляду кандидатури. Дзвінок — це перший і єдиний крок: жодних анкет і очікування відповіді на пошту.
+      Натискаючи «Зателефонувати», ви погоджуєтесь на обробку персональних даних для розгляду кандидатури відповідно до <a href="https://vitan.in.ua/polityka-konfidencijnosti" target="_blank" rel="noopener" style="text-decoration:underline;">Політики конфіденційності Vitan</a>.
     </p>
 
   </div>
 
   <div class="call-bar">
     <div class="call-bar-inner">
-      <a class="call-btn" href="tel:+ТЕСТ">
+      <a class="call-btn" href="tel:+380962223444">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
         </svg>
