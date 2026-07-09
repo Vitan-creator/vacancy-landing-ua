@@ -6,25 +6,27 @@
 <title>Вакансія у Vitan — оператор обладнання</title>
 <style>
   :root{
-    --ink: #1C2024;
-    --paper: #FFFFFF;
-    --cream: #F7F5F1;
-    --accent: #E4572E;
-    --accent-dark: #C43F1C;
-    --slate: #6B7280;
-    --line: #E7E4DE;
+    --steel-dark: #23282E;
+    --steel: #3A4149;
+    --steel-light: #6B747E;
+    --paper: #F3F1EC;
+    --paper-panel: #FFFFFF;
+    --accent: #FF7A1A;
+    --accent-dark: #E0640A;
+    --line: #DEDAD1;
+    --line-dark: rgba(255,255,255,0.12);
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
 
   html,body{
-    background: var(--cream);
-    color: var(--ink);
+    background: var(--paper);
+    color: var(--steel-dark);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
-  body{ padding-bottom: 104px; }
+  body{ padding-bottom: 108px; }
 
   a{ color: inherit; text-decoration:none; }
 
@@ -36,9 +38,8 @@
 
   /* ---------- BRAND HEADER ---------- */
   .brand-bar{
-    background: var(--paper);
-    border-bottom: 1px solid var(--line);
-    padding: 16px 24px;
+    background: var(--steel-dark);
+    padding: 14px 24px;
   }
 
   .brand-bar-inner{
@@ -49,31 +50,44 @@
     justify-content: space-between;
   }
 
-  .brand-bar img{ height: 30px; display:block; }
+  .brand-bar img{ height: 26px; display:block; filter: brightness(0) invert(1); }
 
   .brand-bar .tag{
-    font-size: 12px;
-    color: var(--slate);
-    letter-spacing: 0.02em;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
   }
 
   /* ---------- HERO ---------- */
   .hero{
-    padding: 40px 24px 8px;
+    padding: 36px 24px 8px;
     text-align: left;
   }
 
-  .eyebrow{
-    display: inline-block;
+  .tag-badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--steel-dark);
+    color: #fff;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--accent-dark);
-    background: rgba(228,87,46,0.09);
-    padding: 6px 12px;
-    border-radius: 100px;
-    margin-bottom: 18px;
+    padding: 8px 14px 8px 12px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .tag-badge::before{
+    content:"";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255,122,26,0.25);
   }
 
   h1{
@@ -81,7 +95,7 @@
     font-weight: 800;
     line-height: 1.15;
     letter-spacing: -0.01em;
-    color: var(--ink);
+    color: var(--steel-dark);
   }
 
   h1 .accent{ color: var(--accent); }
@@ -90,24 +104,37 @@
     margin-top: 14px;
     font-size: 16px;
     line-height: 1.6;
-    color: #454B54;
+    color: #4A525B;
     max-width: 460px;
   }
 
-  /* ---------- INFO CARD ---------- */
+  /* ---------- INFO PANEL (riveted metal plate) ---------- */
   .info-card{
     margin-top: 28px;
-    background: var(--paper);
+    background: var(--paper-panel);
     border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 4px 20px;
+    border-radius: 6px;
+    padding: 6px 20px;
+    position: relative;
   }
+
+  .rivet{
+    position: absolute;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #E4E1D9, #B8B3A6 60%, #8D897E);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.3);
+  }
+  .rivet.tl{ top: 8px; left: 8px; }
+  .rivet.tr{ top: 8px; right: 8px; }
+  .rivet.bl{ bottom: 8px; left: 8px; }
+  .rivet.br{ bottom: 8px; right: 8px; }
 
   .row{
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 16px 0;
+    padding: 16px 4px;
     border-bottom: 1px solid var(--line);
     gap: 16px;
   }
@@ -115,28 +142,29 @@
   .row:last-child{ border-bottom:none; }
 
   .row .k{
-    font-size: 14px;
-    color: var(--slate);
+    font-size: 13px;
+    color: var(--steel-light);
     flex-shrink:0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
   }
 
   .row .v{
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
     text-align: right;
-    color: var(--ink);
+    color: var(--steel-dark);
   }
 
   /* ---------- WHY US ---------- */
-  .why{
-    margin-top: 40px;
-  }
+  .why{ margin-top: 40px; }
 
   .why h2{
     font-size: 20px;
     font-weight: 800;
     margin-bottom: 16px;
-    color: var(--ink);
+    color: var(--steel-dark);
   }
 
   .why ul{ list-style:none; }
@@ -149,50 +177,75 @@
     border-top: 1px solid var(--line);
     font-size: 15px;
     line-height:1.5;
-    color: #383D45;
+    color: #3A4149;
   }
 
   .why li:last-child{ border-bottom: 1px solid var(--line); }
 
-  .why .dot{
-    width: 8px; height: 8px;
+  .why .num{
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
     border-radius: 50%;
-    background: var(--accent);
+    width: 22px; height: 22px;
     flex-shrink:0;
-    margin-top: 7px;
+    display:flex; align-items:center; justify-content:center;
+    margin-top: 1px;
   }
 
   /* ---------- ABOUT ---------- */
-  .about{
-    margin-top: 40px;
-    padding-top: 4px;
-  }
+  .about{ margin-top: 40px; }
 
   .about h2{
     font-size: 20px;
     font-weight: 800;
     margin-bottom: 10px;
-    color: var(--ink);
+    color: var(--steel-dark);
   }
 
   .about p{
     font-size: 15px;
     line-height: 1.65;
-    color: #454B54;
+    color: #4A525B;
   }
 
   /* ---------- MID CTA CARD ---------- */
   .mid-cta{
     margin-top: 40px;
-    background: var(--ink);
-    border-radius: 14px;
+    background: linear-gradient(155deg, var(--steel-dark), #171B1F);
+    border-radius: 10px;
     padding: 28px 24px;
     text-align:center;
+    position: relative;
+    overflow: hidden;
   }
 
-  .mid-cta p{
+  .mid-cta::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height: 4px;
+    background: repeating-linear-gradient(90deg, var(--accent) 0 10px, transparent 10px 20px);
+    opacity: 0.6;
+  }
+
+  .mid-cta .counter{
+    display:inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    background: rgba(255,122,26,0.12);
+    border: 1px solid rgba(255,122,26,0.35);
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+
+  .mid-cta p.sub{
     font-size: 14px;
-    color: rgba(255,255,255,0.65);
+    color: rgba(255,255,255,0.55);
     margin-bottom: 16px;
   }
 
@@ -200,19 +253,18 @@
     display:block;
     background: var(--accent);
     color: #fff;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 17px;
-    padding: 16px;
-    border-radius: 9px;
+    padding: 17px;
+    border-radius: 8px;
+    box-shadow: 0 10px 24px -8px rgba(255,122,26,0.5);
   }
-
-  .mid-cta a.tap:hover{ background: var(--accent-dark); }
 
   .mid-cta .num{
     display:block;
     margin-top: 12px;
     font-size: 13px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.45);
   }
 
   /* ---------- FOOT NOTE ---------- */
@@ -221,7 +273,7 @@
     padding-top: 20px;
     border-top: 1px solid var(--line);
     font-size: 12px;
-    color: var(--slate);
+    color: var(--steel-light);
     line-height: 1.6;
   }
 
@@ -229,11 +281,9 @@
   .call-bar{
     position: fixed;
     left: 0; right: 0; bottom: 0;
-    background: var(--paper);
-    border-top: 1px solid var(--line);
+    background: var(--steel-dark);
     padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
     z-index: 50;
-    box-shadow: 0 -6px 20px rgba(0,0,0,0.05);
   }
 
   .call-bar-inner{
@@ -248,15 +298,28 @@
     gap: 10px;
     background: var(--accent);
     color: #fff;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 17px;
     padding: 16px;
-    border-radius: 9px;
+    border-radius: 8px;
+    position: relative;
   }
 
-  .call-btn svg{ width: 19px; height:19px; flex-shrink:0; }
+  .call-btn .ring{
+    position: absolute;
+    left: 22px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.7);
+    animation: pulse-ring 1.8s cubic-bezier(0.2,0.6,0.4,1) infinite;
+  }
 
-  .call-btn:hover{ background: var(--accent-dark); }
+  @keyframes pulse-ring{
+    0%{ transform: scale(0.6); opacity: 0.9; }
+    100%{ transform: scale(1.8); opacity: 0; }
+  }
+
+  .call-btn svg{ width: 19px; height:19px; flex-shrink:0; position:relative; z-index:2; }
 </style>
 </head>
 <body>
@@ -273,12 +336,13 @@
   <div class="container">
 
     <section class="hero">
-      <span class="eyebrow">Відкрита вакансія</span>
+      <span class="tag-badge">Відкрита вакансія</span>
       <h1>Приєднуйся до <span class="accent">команди Vitan</span></h1>
       <p class="subhead">У зв'язку з розширенням виробництва шукаємо оператора для роботи на сучасному обладнанні. Досвід не обов'язковий — навчимо на місці.</p>
 
       <div class="info-card">
-        <div class="row"><span class="k">Посада</span><span class="v">Оператор виробничого обладнання</span></div>
+        <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+        <div class="row"><span class="k">Посада</span><span class="v">Оператор обладнання</span></div>
         <div class="row"><span class="k">Графік</span><span class="v">Позмінний, за домовленістю</span></div>
         <div class="row"><span class="k">Дохід</span><span class="v">Обговорюється на співбесіді</span></div>
         <div class="row"><span class="k">Локація</span><span class="v">Виробництво Vitan</span></div>
@@ -288,9 +352,9 @@
     <section class="why">
       <h2>Чому варто відгукнутися</h2>
       <ul>
-        <li><span class="dot"></span>Vitan — український виробник металовиробів та меблів, що розширює виробничі потужності.</li>
-        <li><span class="dot"></span>Навчаємо роботі на обладнанні з нуля, без вимог до попереднього досвіду.</li>
-        <li><span class="dot"></span>Стабільна зайнятість на діючому підприємстві з багаторічною історією.</li>
+        <li><span class="num">01</span>Vitan — український виробник металовиробів та меблів, що розширює виробничі потужності.</li>
+        <li><span class="num">02</span>Навчаємо роботі на обладнанні з нуля, без вимог до попереднього досвіду.</li>
+        <li><span class="num">03</span>Стабільна зайнятість на діючому підприємстві з багаторічною історією.</li>
       </ul>
     </section>
 
@@ -300,7 +364,8 @@
     </section>
 
     <section class="mid-cta">
-      <p>Залиште собі можливість поговорити з рекрутером напряму</p>
+      <span class="counter">● Набір триває цього тижня</span>
+      <p class="sub">Залиште собі можливість поговорити з рекрутером напряму</p>
       <a class="tap" href="tel:+380962223444">Зателефонувати рекрутеру</a>
       <span class="num">+380 (96) 222 34 44 · Пн–Пт з 10:00 до 16:00</span>
     </section>
@@ -314,6 +379,7 @@
   <div class="call-bar">
     <div class="call-bar-inner">
       <a class="call-btn" href="tel:+380962223444">
+        <span class="ring"></span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
         </svg>
